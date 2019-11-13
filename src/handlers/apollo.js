@@ -11,7 +11,7 @@ const NEWS_API_KEY = 'f4250b67205d412982b6cebf022631ae';
 
 const dataSources = (request) => () => ({
   newsAPI: new NewsAPI(NEWS_API_KEY),
-  request,
+  request: request,
   kvcache: new KVCache(),
 });
 

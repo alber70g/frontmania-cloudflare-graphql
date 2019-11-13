@@ -1,13 +1,15 @@
-const { gql } = require('apollo-server-cloudflare')
+const { gql } = require('apollo-server-cloudflare');
 
 module.exports = gql`
   type Query {
-    topnewsLocal: TopnewsWrapper 
-    topnewsTopic(topic: String): TopnewsWrapper 
+    topnewsLocal(country: String): TopnewsWrapper
+    topnewsTopic(topic: String, country: String): TopnewsWrapper
   }
 
   type TopnewsWrapper {
     fromCache: Boolean
+    country: String
+    url: String
     items: [Item]
   }
 
@@ -19,4 +21,4 @@ module.exports = gql`
     image: String
     content: String
   }
-`
+`;

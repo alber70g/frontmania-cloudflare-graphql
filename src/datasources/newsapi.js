@@ -7,16 +7,22 @@ class NewsAPI extends RESTDataSource {
     this.baseURL = 'https://newsapi.org/v2/';
   }
 
-  async getTopnews(country = 'gb') {
-    return await this.get(
-      `${this.baseURL}top-headlines?country=${country}&apiKey=${this.API_KEY}`,
-    );
+  async getTopnews(country) {
+    const url = `${this.baseURL}top-headlines?country=${country}&apiKey=${this.API_KEY}`;
+    const res = await this.get(url);
+    return {
+      res,
+      url,
+    };
   }
 
-  async getTopnewsTopic(topic) {
-    return await this.get(
-      `${this.baseURL}top-headlines?q=${topic}&apiKey=${this.API_KEY}`,
-    );
+  async getTopnewsTopic(topic, country) {
+    const url = `${this.baseURL}top-headlines?q=${topic}&country=${country}&apiKey=${this.API_KEY}`;
+    const res = await this.get(url);
+    return {
+      res,
+      url,
+    };
   }
 }
 
